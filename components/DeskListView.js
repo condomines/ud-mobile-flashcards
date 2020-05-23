@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView, View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native'
 
-class Decks extends Component {
+class DeckListView extends Component {
 	render () {
 		return (
 			<View>
@@ -13,4 +13,4 @@ class Decks extends Component {
 	}
 }
 
-export default Decks
+export default DeckListView

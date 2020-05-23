@@ -6,7 +6,7 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import Decks from './components/Decks'
+import DeskListView from './components/DeskListView'
 import AddDeck from './components/AddDeck'
 
 const instructions = Platform.select({
@@ -16,15 +16,15 @@ const instructions = Platform.select({
 
 
 const Tabs = createBottomTabNavigator({
-  Decks: {
-    screen: Decks,
+  DeskListView: {
+    screen: DeskListView,
     navigationOptions: {
       tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <MaterialCommunityIcons name="cards" size={24} color={ tintColor }/>
     },
   },
   AddDeck: {
-    screen: Decks,
+    screen: DeskListView,
     navigationOptions: {
       tabBarLabel: 'Add Deck',
       tabBarIcon: ({ tintColor }) => <Entypo name="circle-with-plus" size={24} color={ tintColor } />
