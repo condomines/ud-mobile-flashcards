@@ -1,60 +1,51 @@
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native'
-import { FlatList } from 'react-navigation'
+import React from 'react'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
-class AddDeck extends Component {
+function AddDeck () {
 
-	Decks = [
-		{id: 1, name: 'My first deck', cards: 3},
-		{id: 2, name: 'My first deck', cards: 3},
-		{id: 3, name: 'My first deck', cards: 3},
-		{id: 4, name: 'My first deck', cards: 3},
-		{id: 5, name: 'My first deck', cards: 3},
-		{id: 6, name: 'My first deck', cards: 3},
-		{id: 7, name: 'My second desk', cards: 2}
-	]
+	const [value, onChangeText] = React.useState();
 
-	renderItem ({item, separators}) {
-		const {name, cards} = item
+	const onPress = (id) => {console.log('Pressed. id:', id)}
 
-		return (
-			<TouchableOpacity style={styles.deckContainer}
-				onPress={() => {
-					console.log('Pressed')}} >
-				<View >
-					<Text style={styles.deckName}>{name}</Text>
-					<Text style={styles.deckCard}>{cards} cards</Text>
-				</View>
-			</TouchableOpacity>
+	return (
+		<View 
+			style={styles.container}>
+			<Text style={styles.title}>What is the title of your new deck?</Text>
+		    <TextInput style={styles.textInput}
+		      onChangeText={text => onChangeText(text)}
+		      value={value}
+		      placeholder='Enter deck title'
+		    />
+		    <TouchableOpacity style={styles.btn}
+	          onPress={() => alert('Submit pressed')} >
+	        	<Text style={{color: 'white'}}>Submit</Text>
+	        </TouchableOpacity>
+		</View>
 		)
-	}
-
-	render () {
-		return (
-			<View 
-				style={styles.container}>
-				<Text>Add view</Text>
-				<FlatList
-					data={this.Decks}
-		         	renderItem={this.renderItem}
-         	        keyExtractor={item => item.id}
-			        contentContainerStyle={{ padding: 10 }}
-          		/>
-			</View>
-		)
-	}
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    alignItems: 'center',
-
+    alignItems: 'stretch',
+    marginTop: 10
   },
-  deckContainer: {
-    alignItems: 'center',
-  	backgroundColor: '#000',
+  title: {
+  	fontSize: 20,
+  	color: '#000',
+  	padding: 10
+  },
+  textInput: {
+  	height: 40, 
+  	borderColor: 'gray', 
+  	borderWidth: 1,
+  	padding: 10,
+  	margin: 10
+  },
+  btn: {
+  	flexDirection: 'row',
+    backgroundColor: '#000',
     borderRadius: 16,
     padding: 20,
     marginLeft: 10,
@@ -69,14 +60,6 @@ const styles = StyleSheet.create({
       height: 3
   	},
   },
-  deckName: {
-    fontSize: 20,
-	color: '#fff'
-
-  },
-  deckCard: {
-  	color: 'gray'
-  }
 })
 
 export default AddDeck
