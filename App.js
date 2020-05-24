@@ -24,7 +24,7 @@ const Tabs = createBottomTabNavigator({
     },
   },
   AddDeck: {
-    screen: DeskListView,
+    screen: AddDeck,
     navigationOptions: {
       tabBarLabel: 'Add Deck',
       tabBarIcon: ({ tintColor }) => <Entypo name="circle-with-plus" size={24} color={ tintColor } />
