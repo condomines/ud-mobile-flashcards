@@ -14,13 +14,19 @@ class DeckListView extends Component {
 		{id: 7, name: 'My second desk', cards: 2}
 	]
 
-	renderItem ({item}) {
+	onPress = (id) => {console.log('Pressed. id:', id)}
+
+	renderItem ({item, separators}) {
 		const {name, cards} = item
+
 		return (
-			<View style={styles.deckContainer}>
-				<Text style={styles.deckName}>{name}</Text>
-				<Text style={styles.deckCard}>{cards} cards</Text>
-			</View>
+			<TouchableOpacity style={styles.deckContainer}
+				onPress={() => {this.onPress(item.id)}} >
+				<View style={{alignItems: 'center'}}>
+					<Text style={styles.deckName}>{name}</Text>
+					<Text style={styles.deckCard}>{cards} cards</Text>
+				</View>
+			</TouchableOpacity>
 		)
 	}
 
@@ -28,10 +34,10 @@ class DeckListView extends Component {
 		return (
 			<View 
 				style={styles.container}>
-				<Text>List view</Text>
+				<Text>Add view</Text>
 				<FlatList
 					data={this.Decks}
-		         	renderItem={this.renderItem}
+		         	renderItem={(obj) => {return this.renderItem(obj)}}
          	        keyExtractor={item => item.id}
 			        contentContainerStyle={{ padding: 10 }}
           		/>
@@ -63,16 +69,15 @@ const styles = StyleSheet.create({
       width: 0,
       height: 3
   	},
-  	color: '#fff'
   },
   deckName: {
-  	    fontSize: 20,
-color: '#fff'
+    fontSize: 20,
+	color: '#fff'
 
   },
   deckCard: {
   	color: 'gray'
   }
- })
+})
 
 export default DeckListView
