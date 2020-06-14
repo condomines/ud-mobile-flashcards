@@ -38,7 +38,7 @@ class DeckListView extends Component {
 				<FlatList
 					data={this.Decks}
 		         	renderItem={(obj) => {return this.renderItem(obj)}}
-         	        keyExtractor={item => item.id}
+         	        keyExtractor={item => item.id.toString()}
 			        contentContainerStyle={{ padding: 10 }}
           		/>
 			</View>
