@@ -35,7 +35,7 @@ const Tabs = createBottomTabNavigator({
   }
 } , {
   navigationOptions: {
-    header: null
+    headerShown: false
   },
   tabBarOptions: {
     style: {
