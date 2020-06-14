@@ -6,12 +6,12 @@ class DeckListView extends Component {
 
 	Decks = [
 		{id: 1, name: 'My first deck', cards: 3},
-		{id: 2, name: 'My first deck', cards: 3},
-		{id: 3, name: 'My first deck', cards: 3},
-		{id: 4, name: 'My first deck', cards: 3},
-		{id: 5, name: 'My first deck', cards: 3},
-		{id: 6, name: 'My first deck', cards: 3},
-		{id: 7, name: 'My second desk', cards: 2}
+		{id: 2, name: 'My second deck', cards: 4},
+		{id: 3, name: 'My third deck', cards: 6},
+		{id: 4, name: 'My fourth deck', cards: 1},
+		{id: 5, name: 'My fifth deck', cards: 2},
+		{id: 6, name: 'My sixth deck', cards: 5},
+		{id: 7, name: 'My nineth desk', cards: 2}
 	]
 
 	onPress = (id) => {console.log('Pressed. id:', id)}
