@@ -1,9 +1,12 @@
+import 'react-native-gesture-handler';
+
 import * as React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
 import { createAppContainer } from 'react-navigation';
 
 import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { createStackNavigator } from 'react-navigation-stack'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import DeskListView from './components/DeskListView'
@@ -48,14 +51,18 @@ const Tabs = createBottomTabNavigator({
   }
 })
 
-const AppContainer = createAppContainer(Tabs);
+
+const MainNavigator = createStackNavigator({
+  Home: {
+    screen: Tabs,
+  },
+})
+
+const AppContainer = createAppContainer(MainNavigator);
 
 export default function App() {
   return (
     <AppContainer>
-    <View style={styles.container}>
-      <Tabs />
-    </View>
     </AppContainer>
   );
 }
