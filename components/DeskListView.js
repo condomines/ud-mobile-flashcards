@@ -16,8 +16,9 @@ class DeckListView extends Component {
 
 	onPress = (id) => {
 		console.log('Pressed. id:', id)
+		console.log('Deck: ', this.Decks[id].name)
 		const { navigate } = this.props.navigation;
-		navigate('DeskView', {id})
+		navigate('DeckView', {deck: this.Decks.find(item=>item.id === id)})
 	}
 
 	renderItem ({item, separators}) {

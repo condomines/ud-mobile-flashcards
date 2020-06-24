@@ -2,13 +2,13 @@ import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 function DeckView (props) {
-    const { id } = props.navigation.state.params
+    const { id, name, cards } = props.navigation.state.params.deck
 
     return (
 		<View 
 			style={styles.container}>
-			<Text style={styles.deckName}>Deck NAME - id: {id}</Text>
-            <Text style={styles.deckCards}>4 cards</Text>
+			<Text style={styles.title}>{name}</Text>
+            <Text style={styles.deckCards}>{cards} cards</Text>
             
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnAdd}}
 	          onPress={() => alert('Add card pressed')} >
@@ -41,7 +41,11 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         color: '#000',
-        padding: 10
+        padding: 10,
+        textAlign: 'center'
+    },
+    deckCards: {
+        textAlign: 'center'
     },
     btn: {
       flexDirection: 'row',

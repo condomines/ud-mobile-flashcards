@@ -61,9 +61,20 @@ const MainNavigator = createStackNavigator({
   Home: {
     screen: Tabs,
   },
-  DeskView: {
+  DeckView: {
     screen: DeckView,
-  }
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.deck.name}`,
+    }),
+  },
+  AddCard: {
+    screen: AddCard
+  },
+  QuizView: {
+    screen: QuizView
+  },
+  
+
 })
 
 const AppContainer = createAppContainer(MainNavigator);
