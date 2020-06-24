@@ -13,6 +13,7 @@ import { Entypo } from '@expo/vector-icons';
 import DeskListView from './components/DeskListView'
 import AddDeck from './components/AddDeck'
 import DeckView from './components/DeckView'
+import QuizView from './components/QuizView'
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
@@ -22,7 +23,7 @@ const instructions = Platform.select({
 
 const Tabs = createBottomTabNavigator({
   DeskListView: {
-    screen: DeckView,
+    screen: QuizView,
     navigationOptions: {
       tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <MaterialCommunityIcons name="cards" size={24} color={ tintColor }/>
