@@ -2,7 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 function DeckView (props) {
-    const { id, name, cards } = props.navigation.state.params.deck
+    const { navigate, state } = props.navigation 
+    const { id, name, cards } = state.params.deck
 
     return (
 		<View 
@@ -11,13 +12,13 @@ function DeckView (props) {
             <Text style={styles.deckCards}>{cards} cards</Text>
             
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnAdd}}
-	          onPress={() => alert('Add card pressed')} >
+	          onPress={() => navigate('AddCard', {id})} >
 	        	<Text style={styles.btnAdd}>Add card</Text>
 	        </TouchableOpacity>
 
 
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnStart}}
-	          onPress={() => alert('Start quiz pressed')} >
+	          onPress={() => navigate('QuizView', {id})} >
 	        	<Text style={styles.btnStart}>Start quiz</Text>
 	        </TouchableOpacity>
 

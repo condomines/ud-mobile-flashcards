@@ -68,10 +68,16 @@ const MainNavigator = createStackNavigator({
     }),
   },
   AddCard: {
-    screen: AddCard
+    screen: AddCard,
+    navigationOptions: ({ navigation }) => ({
+      title: `Add card`,
+    }),
   },
   QuizView: {
-    screen: QuizView
+    screen: QuizView,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.id}`,
+    }),
   },
   
 
