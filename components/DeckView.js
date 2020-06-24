@@ -1,12 +1,13 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
-function DeckView () {
+function DeckView (props) {
+    const { id } = props.navigation.state.params
 
     return (
 		<View 
 			style={styles.container}>
-			<Text style={styles.deckName}>Deck NAME</Text>
+			<Text style={styles.deckName}>Deck NAME - id: {id}</Text>
             <Text style={styles.deckCards}>4 cards</Text>
             
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnAdd}}

@@ -25,7 +25,7 @@ const instructions = Platform.select({
 
 const Tabs = createBottomTabNavigator({
   DeskListView: {
-    screen: AddCard,
+    screen: DeskListView,
     navigationOptions: {
       tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <MaterialCommunityIcons name="cards" size={24} color={ tintColor }/>
@@ -61,6 +61,9 @@ const MainNavigator = createStackNavigator({
   Home: {
     screen: Tabs,
   },
+  DeskView: {
+    screen: DeckView,
+  }
 })
 
 const AppContainer = createAppContainer(MainNavigator);

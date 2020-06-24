@@ -14,7 +14,11 @@ class DeckListView extends Component {
 		{id: 7, name: 'My nineth desk', cards: 2}
 	]
 
-	onPress = (id) => {console.log('Pressed. id:', id)}
+	onPress = (id) => {
+		console.log('Pressed. id:', id)
+		const { navigate } = this.props.navigation;
+		navigate('DeskView', {id})
+	}
 
 	renderItem ({item, separators}) {
 		const {name, cards} = item
@@ -31,6 +35,8 @@ class DeckListView extends Component {
 	}
 
 	render () {
+		console.log('props: ', this.props)
+	
 		return (
 			<View 
 				style={styles.container}>
