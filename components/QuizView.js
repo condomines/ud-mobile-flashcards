@@ -9,18 +9,24 @@ the number of cards left in the quiz
 Displays the percentage correct once the quiz is complete*/
 
 function QuizView () {
+
+    const [showAnswer, flipAnswer] = React.useState(false);
+
+    let text = showAnswer ? 'the answer is Yes!' : 'Does react native work with Android?'
+
     return (
 		<View 
 			style={styles.container}>
 			<Text style={styles.quizProgress}>2/3</Text>
-            <Text style={styles.question}>Does react native work with Android?</Text>
-            <Text style={styles.answer}>Answer</Text>
+            <TouchableOpacity onPress={() => flipAnswer(!showAnswer)}>
+                <Text style={styles.question}>{text}</Text>
+                <Text style={styles.selector}>{showAnswer ? 'Question' : 'Answer'}</Text>
+            </TouchableOpacity>
 
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnCorrect}}
 	          onPress={() => alert('Correct pressed')} >
 	        	<Text style={styles.btnCorrect}>Correct</Text>
 	        </TouchableOpacity>
-
 
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnIncorrect}}
 	          onPress={() => alert('Incorrect pressed')} >
@@ -73,7 +79,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
 
     },
-    answer: {
+    selector: {
         textAlign: 'center',
         color: 'red',
         paddingTop: 15,
