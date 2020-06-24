@@ -5,8 +5,6 @@ function AddDeck () {
 
 	const [value, onChangeText] = React.useState();
 
-	const onPress = (id) => {console.log('Pressed. id:', id)}
-
 	return (
 		<View 
 			style={styles.container}>

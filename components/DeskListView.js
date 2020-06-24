@@ -34,7 +34,7 @@ class DeckListView extends Component {
 		return (
 			<View 
 				style={styles.container}>
-				<Text>Add view</Text>
+				<Text>Available decks: {this.Decks.length}</Text>
 				<FlatList
 					data={this.Decks}
 		         	renderItem={(obj) => {return this.renderItem(obj)}}
