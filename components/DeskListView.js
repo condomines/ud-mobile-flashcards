@@ -4,21 +4,20 @@ import { FlatList } from 'react-navigation'
 
 class DeckListView extends Component {
 
-	Decks = [
-		{id: 1, name: 'My first deck', cards: 3},
-		{id: 2, name: 'My second deck', cards: 4},
-		{id: 3, name: 'My third deck', cards: 6},
-		{id: 4, name: 'My fourth deck', cards: 1},
-		{id: 5, name: 'My fifth deck', cards: 2},
-		{id: 6, name: 'My sixth deck', cards: 5},
-		{id: 7, name: 'My nineth desk', cards: 2}
-	]
+	Decks = {
+		1: {id: 1, name: 'My first deck', cards: 3},
+		2: {id: 2, name: 'My second deck', cards: 4},
+		3: {id: 3, name: 'My third deck', cards: 6},
+		4: {id: 4, name: 'My fourth deck', cards: 1},
+		5: {id: 5, name: 'My fifth deck', cards: 2},
+		6: {id: 6, name: 'My sixth deck', cards: 5},
+	}
 
 	onPress = (id) => {
 		console.log('Pressed. id:', id)
 		console.log('Deck: ', this.Decks[id].name)
 		const { navigate } = this.props.navigation;
-		navigate('DeckView', {deck: this.Decks.find(item=>item.id === id)})
+		navigate('DeckView', {deck: this.Decks[id]})
 	}
 
 	renderItem ({item, separators}) {
@@ -43,7 +42,7 @@ class DeckListView extends Component {
 				style={styles.container}>
 				<Text>Available decks: {this.Decks.length}</Text>
 				<FlatList
-					data={this.Decks}
+					data={Object.values(this.Decks)}
 		         	renderItem={(obj) => {return this.renderItem(obj)}}
          	        keyExtractor={item => item.id.toString()}
 			        contentContainerStyle={{ padding: 10 }}

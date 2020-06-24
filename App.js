@@ -56,7 +56,6 @@ const Tabs = createBottomTabNavigator({
   }
 })
 
-
 const MainNavigator = createStackNavigator({
   Home: {
     screen: Tabs,
