@@ -9,7 +9,7 @@ function DeckView (props) {
 		<View 
 			style={styles.container}>
 			<Text style={styles.title}>{name}</Text>
-            <Text style={styles.deckCards}>{cards} cards</Text>
+            <Text style={styles.deckCards}>{cards.length} cards</Text>
             
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnAdd}}
 	          onPress={() => navigate('AddCard', {id})} >

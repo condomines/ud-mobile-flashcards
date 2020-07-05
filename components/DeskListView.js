@@ -5,13 +5,31 @@ import { FlatList } from 'react-navigation'
 class DeckListView extends Component {
 
 	Decks = {
-		1: {id: 1, name: 'My first deck', cards: 3},
-		2: {id: 2, name: 'My second deck', cards: 4},
-		3: {id: 3, name: 'My third deck', cards: 6},
-		4: {id: 4, name: 'My fourth deck', cards: 1},
-		5: {id: 5, name: 'My fifth deck', cards: 2},
-		6: {id: 6, name: 'My sixth deck', cards: 5},
-	}
+        1: {
+			id: '1',
+          name: 'React',
+          cards: [
+            {
+              question: 'What is React?',
+              answer: 'A library for managing user interfaces'
+            },
+            {
+              question: 'Where do you make Ajax requests in React?',
+              answer: 'The componentDidMount lifecycle event'
+            }
+          ]
+        },
+        2: {
+			id: '2',
+            name: 'JavaScript',
+            cards: [
+            {
+              question: 'What is a closure?',
+              answer: 'The combination of a function and the lexical environment within which that function was declared.'
+            }
+          ]
+        }
+      }
 
 	onPress = (id) => {
 		console.log('Pressed. id:', id)
@@ -28,7 +46,7 @@ class DeckListView extends Component {
 				onPress={() => {this.onPress(item.id)}} >
 				<View style={{alignItems: 'center'}}>
 					<Text style={styles.deckName}>{name}</Text>
-					<Text style={styles.deckCard}>{cards} cards</Text>
+					<Text style={styles.deckCard}>{cards.length} cards</Text>
 				</View>
 			</TouchableOpacity>
 		)
@@ -44,7 +62,7 @@ class DeckListView extends Component {
 				<FlatList
 					data={Object.values(this.Decks)}
 		         	renderItem={(obj) => {return this.renderItem(obj)}}
-         	        keyExtractor={item => item.id.toString()}
+         	        /*keyExtractor={item => item.id.toString()}*/
 			        contentContainerStyle={{ padding: 10 }}
           		/>
 			</View>
