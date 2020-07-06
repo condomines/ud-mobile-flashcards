@@ -1,12 +1,18 @@
 import 'react-native-gesture-handler';
 
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
-import { createAppContainer } from 'react-navigation';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import decks from './reducers'
+import { initData } from './actions'
+import middleware from './middleware'
 
+import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createStackNavigator } from 'react-navigation-stack'
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 
@@ -17,6 +23,8 @@ import QuizView from './components/QuizView'
 import AddCard from './components/AddCard'
 
 import { getDecks } from './utils/Storage'
+
+
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
@@ -85,8 +93,18 @@ const MainNavigator = createStackNavigator({
 
 const AppContainer = createAppContainer(MainNavigator);
 
-export default function App() {
+const store = createStore(decks, middleware)
 
+function App() {
+
+  const [test, setTest] = useState(0)
+
+  useEffect(() => {
+    console.log ('useEffect')
+    store.dispatch(initData())
+    setTest('myTest')
+    }
+    )
 
   getDecks()
   .then(
@@ -95,8 +113,10 @@ export default function App() {
 
 
   return (
-    <AppContainer>
-    </AppContainer>
+    <Provider store={store}>
+      <AppContainer>
+      </AppContainer>
+    </Provider>
   );
 }
 
@@ -118,3 +138,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default App

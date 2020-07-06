@@ -9,7 +9,7 @@ function DeckView (props) {
 		<View 
 			style={styles.container}>
 			<Text style={styles.title}>{name}</Text>
-            <Text style={styles.deckCards}>{cards.length} cards</Text>
+            <Text style={styles.deckCards}>{cards.length} cardsass</Text>
             
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnAdd}}
 	          onPress={() => navigate('AddCard', {id})} >
@@ -25,7 +25,7 @@ function DeckView (props) {
 
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnDelete}}
 	          onPress={() => alert('Delete deck pressed')} >
-	        	<Text style={styles.btnDelete}>Delete deck</Text>
+	        	<Text style={styles.btnDelete}>Delete deckddd</Text>
 	        </TouchableOpacity>
 
 		</View>

@@ -4,6 +4,9 @@ export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_CARD = 'ADD_CARD'
 
+export const SHOW_LOADING = 'SHOW_LOADING'
+export const HIDE_LOADING = 'HIDE_LOADING'
+
 export function receiveDecks (decks) {
   return {
     type: RECEIVE_DECKS,
@@ -26,15 +29,28 @@ export function addCard (deckId, card) {
   }
 }
 
+export function showLoading() {
+  console.log('show loading')
+  return {
+    type: SHOW_LOADING,
+  }
+}
+export function hideLoading() {
+  console.log('hide loading')
+  return {
+    type: HIDE_LOADING,
+  }
+}
+
 export function initData () {
     return (dispatch) => {
-//      dispatch(showLoading())
+      dispatch(showLoading())
       return getDecks()
         .then(
-          ({decks}) => {
-            dispatch(receiveDecks(decks))
-//            dispatch(hideLoading())
+          (res) => {
+            console.log('Decks in the action: ', res)
+            dispatch(receiveDecks(res))
+            dispatch(hideLoading())
           })
     }
   }
-}

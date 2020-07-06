@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-navigation'
+import { connect } from 'react-redux'
 
 class DeckListView extends Component {
 
 	Decks = {
         1: {
 			id: '1',
-          name: 'React',
+          name: 'React11',
           cards: [
             {
               question: 'What is React?',
@@ -21,7 +22,7 @@ class DeckListView extends Component {
         },
         2: {
 			id: '2',
-            name: 'JavaScript',
+            name: 'JavaScript11',
             cards: [
             {
               question: 'What is a closure?',
@@ -54,13 +55,14 @@ class DeckListView extends Component {
 
 	render () {
 		console.log('props: ', this.props)
-	
+		const { Decks } = this.props
+
 		return (
 			<View 
 				style={styles.container}>
-				<Text>Available decks: {this.Decks.length}</Text>
+				<Text>Available decks: {Decks.length}</Text>
 				<FlatList
-					data={Object.values(this.Decks)}
+					data={Object.values(Decks)}
 		         	renderItem={(obj) => {return this.renderItem(obj)}}
          	        /*keyExtractor={item => item.id.toString()}*/
 			        contentContainerStyle={{ padding: 10 }}
@@ -104,4 +106,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export default DeckListView
+const mapStateToProp = ( state ) => {
+	return { Decks: state }
+  }
+
+export default connect(mapStateToProp)(DeckListView)
