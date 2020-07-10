@@ -1,10 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { addCard } from '../actions/'
+
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
-function AddCard () {
+function AddCard (props) {
     const [question, setQuestion] = React.useState('');
     const [answer, setAnswer] = React.useState('');
 
+    const deckId = props.navigation.state.params.id
+
+    const submit = (text) => {
+      console.log('submit', text)
+      props.dispatch(addCard (deckId, {question, answer}))
+      props.navigation.pop()
+    }
+
+    console.log('propso', props)
     return (
 		<View 
 			style={styles.container}>
@@ -23,7 +35,7 @@ function AddCard () {
 		    />
 
 		    <TouchableOpacity style={styles.btnSubmit}
-	          onPress={() => alert('submit pressed')} >
+	          onPress={() => submit('submit pressed')} >
 	        	<Text style={{color: 'white'}}>Submit</Text>
 	        </TouchableOpacity>
 
@@ -69,4 +81,4 @@ const styles = StyleSheet.create({
     },
   })
 
-export default AddCard
+export default connect()(AddCard)

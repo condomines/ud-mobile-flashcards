@@ -1,9 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
 
 function DeckView (props) {
     const { navigate, state } = props.navigation 
-    const { id, name, cards } = state.params.deck
+    const { id } = state.params
+    const { name, cards} = props.decks[id]
 
     return (
 		<View 
@@ -79,4 +81,8 @@ const styles = StyleSheet.create({
     },
   })
 
-export default DeckView
+  const mapStateToProp = ( decks ) => {
+    return { decks }
+    }
+
+export default connect(mapStateToProp)(DeckView)

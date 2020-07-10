@@ -9,7 +9,7 @@ class DeckListView extends Component {
     const { decks } = this.props
 		console.log('Pressed. id:', id)
 		const { navigate } = this.props.navigation;
-		navigate('DeckView', {deck: decks[id]})
+		navigate('DeckView', {id})
 	}
 
 	renderItem ({item, separators}) {
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapStateToProp = ( state ) => {
-	return { decks: state }
+const mapStateToProp = ( decks ) => {
+	return { decks }
   }
 
 export default connect(mapStateToProp)(DeckListView)

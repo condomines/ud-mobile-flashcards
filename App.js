@@ -62,7 +62,7 @@ const MainNavigator = createStackNavigator({
   DeckView: {
     screen: DeckView,
     navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.deck.name}`,
+      //title: `${navigation.state.params.deck.name}`,
     }),
   },
   AddCard: {
