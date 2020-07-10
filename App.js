@@ -98,12 +98,6 @@ function App() {
     }
     )
 
-  getDecks()
-  .then(
-    (res) => {
-      console.log('Decks: ', res)})
-
-
   return (
     <Provider store={store}>
       <AppContainer>
