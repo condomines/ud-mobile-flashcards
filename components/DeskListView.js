@@ -5,38 +5,11 @@ import { connect } from 'react-redux'
 
 class DeckListView extends Component {
 
-	Decks = {
-        1: {
-			id: '1',
-          name: 'React11',
-          cards: [
-            {
-              question: 'What is React?',
-              answer: 'A library for managing user interfaces'
-            },
-            {
-              question: 'Where do you make Ajax requests in React?',
-              answer: 'The componentDidMount lifecycle event'
-            }
-          ]
-        },
-        2: {
-			id: '2',
-            name: 'JavaScript11',
-            cards: [
-            {
-              question: 'What is a closure?',
-              answer: 'The combination of a function and the lexical environment within which that function was declared.'
-            }
-          ]
-        }
-      }
-
 	onPress = (id) => {
+    const { decks } = this.props
 		console.log('Pressed. id:', id)
-		console.log('Deck: ', this.Decks[id].name)
 		const { navigate } = this.props.navigation;
-		navigate('DeckView', {deck: this.Decks[id]})
+		navigate('DeckView', {deck: decks[id]})
 	}
 
 	renderItem ({item, separators}) {
@@ -54,15 +27,14 @@ class DeckListView extends Component {
 	}
 
 	render () {
-		console.log('props: ', this.props)
-		const { Decks } = this.props
+		const { decks } = this.props
 
 		return (
 			<View 
 				style={styles.container}>
-				<Text>Available decks: {Decks.length}</Text>
+				<Text>Available decks: {decks.length}</Text>
 				<FlatList
-					data={Object.values(Decks)}
+					data={Object.values(decks)}
 		         	renderItem={(obj) => {return this.renderItem(obj)}}
          	        /*keyExtractor={item => item.id.toString()}*/
 			        contentContainerStyle={{ padding: 10 }}
@@ -107,7 +79,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProp = ( state ) => {
-	return { Decks: state }
+	return { decks: state }
   }
 
 export default connect(mapStateToProp)(DeckListView)
