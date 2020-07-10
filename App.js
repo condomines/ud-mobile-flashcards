@@ -22,8 +22,6 @@ import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
 import AddCard from './components/AddCard'
 
-import { getDecks } from './utils/Storage'
-
 const Tabs = createBottomTabNavigator({
   DeskListView: {
     screen: DeskListView,
@@ -89,14 +87,9 @@ const store = createStore(decks, middleware)
 
 function App() {
 
-  const [test, setTest] = useState(0)
-
   useEffect(() => {
-    console.log ('useEffect')
     store.dispatch(initData())
-    setTest('myTest')
-    }
-    )
+    })
 
   return (
     <Provider store={store}>

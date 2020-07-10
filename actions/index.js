@@ -47,9 +47,8 @@ export function initData () {
       dispatch(showLoading())
       return getDecks()
         .then(
-          (res) => {
-            console.log('Decks in the action: ', res)
-            dispatch(receiveDecks(res))
+          (decks) => {
+            dispatch(receiveDecks(decks))
             dispatch(hideLoading())
           })
     }
