@@ -3,9 +3,8 @@ import { AsyncStorage } from 'react-native'
 const STORAGE_KEY = 'UD-Mobile-Flashcards-Decks'
 
 const demoData = {
-  1: {
-      id: '1',
-      name: 'React',
+  React: {
+      title: 'React',
       cards: [
         {
           question: 'What is React?',
@@ -17,9 +16,8 @@ const demoData = {
         }
       ]
   },
-  2: {
-      id: '2',
-      name: 'JavaScript',
+  JavaScript: {
+      title: 'JavaScript',
       cards: [
       {
         question: 'What is a closure?',
@@ -46,7 +44,7 @@ export function getDecks () {
 }
 
 export function saveDeckTitle(title) {
-  const deck = {title: {id: title, questions: []}}
+  const deck = {title: {title, cards: []}}
   return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify(deck))
 }
 

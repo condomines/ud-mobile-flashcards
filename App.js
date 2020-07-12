@@ -74,7 +74,7 @@ const MainNavigator = createStackNavigator({
   QuizView: {
     screen: QuizView,
     navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.id}`,
+      title: `${navigation.state.params.title}`,
     }),
   },
   

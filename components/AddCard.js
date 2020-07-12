@@ -74,10 +74,10 @@ const styles = StyleSheet.create({
   })
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const deckId = ownProps.navigation.state.params.id
+  const title = ownProps.navigation.state.params.title
   
   return {
-    addCard: card => dispatch(addCard (deckId, card))
+    addCard: card => dispatch(addCard (title, card))
   }
 }
 

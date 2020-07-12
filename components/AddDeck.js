@@ -17,13 +17,14 @@ function AddDeck (props) {
 			actions: [
 				NavigationActions.navigate({ routeName: 'Home' }),
 				NavigationActions.navigate({ routeName: 'DeckView' , 
-												params: {id: title}})
+												params: {title}})
 			]
 		  })
 		props.navigation.dispatch(navigateAction)
 	}
 	
 	const submit = () => {
+		// TODO: check if the title already exists
 		dispatch(addDeck(title))
 		saveDeckTitle(title)
 		toDeckview(title)

@@ -10,14 +10,14 @@ function decks (state = {}, action) {
     case ADD_DECK :
       return {
         ...state,
-        [action.title]: {id: action.title, name: action.title, cards: []}
+        [action.title]: {title: action.title, cards: []}
       }
     case ADD_CARD :
-        const deck = state[action.deckId]
+        const deck = state[action.title]
         const newDeck = {...deck, cards: [...deck.cards, action.card]}
         return {
             ...state,
-            [action.deckId]: newDeck 
+            [action.title]: newDeck 
         }
     default :
       return state

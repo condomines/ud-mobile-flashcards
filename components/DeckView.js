@@ -4,23 +4,23 @@ import { connect } from 'react-redux'
 
 function DeckView (props) {
     const { navigate, state } = props.navigation 
-    const { id } = state.params
-    const { name, cards} = props.decks[id]
+    const { title } = state.params
+    const { cards } = props.decks[title]
 
     return (
 		<View 
 			style={styles.container}>
-			<Text style={styles.title}>{name}</Text>
+			<Text style={styles.title}>{title}</Text>
             <Text style={styles.deckCards}>{cards.length} cards</Text>
             
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnAdd}}
-	          onPress={() => navigate('AddCard', {id})} >
+	          onPress={() => navigate('AddCard', {title})} >
 	        	<Text style={styles.btnAdd}>Add card</Text>
 	        </TouchableOpacity>
 
 
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnStart}}
-	          onPress={() => navigate('QuizView', {id})} >
+	          onPress={() => navigate('QuizView', {title})} >
 	        	<Text style={styles.btnStart}>Start quiz</Text>
 	        </TouchableOpacity>
 

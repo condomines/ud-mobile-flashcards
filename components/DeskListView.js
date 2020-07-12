@@ -5,21 +5,20 @@ import { connect } from 'react-redux'
 
 class DeckListView extends Component {
 
-	onPress = (id) => {
+	onPress = (title) => {
     const { decks } = this.props
-		console.log('Pressed. id:', id)
 		const { navigate } = this.props.navigation;
-		navigate('DeckView', {id})
+		navigate('DeckView', {title})
 	}
 
 	renderItem ({item, separators}) {
-		const {name, cards} = item
+		const {title, cards} = item
 
 		return (
 			<TouchableOpacity style={styles.deckContainer}
-				onPress={() => {this.onPress(item.id)}} >
+				onPress={() => {this.onPress(item.title)}} >
 				<View style={{alignItems: 'center'}}>
-					<Text style={styles.deckName}>{name}</Text>
+					<Text style={styles.deckName}>{title}</Text>
 					<Text style={styles.deckCard}>{cards.length} cards</Text>
 				</View>
 			</TouchableOpacity>
@@ -36,7 +35,7 @@ class DeckListView extends Component {
 				<FlatList
 					data={Object.values(decks)}
 		         	renderItem={(obj) => {return this.renderItem(obj)}}
-         	        /*keyExtractor={item => item.id.toString()}*/
+         	        keyExtractor={item => item.title}
 			        contentContainerStyle={{ padding: 10 }}
           		/>
 			</View>
