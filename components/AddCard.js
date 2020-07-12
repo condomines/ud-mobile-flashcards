@@ -8,15 +8,11 @@ function AddCard (props) {
     const [question, setQuestion] = React.useState('');
     const [answer, setAnswer] = React.useState('');
 
-    const deckId = props.navigation.state.params.id
-
-    const submit = (text) => {
-      console.log('submit', text)
-      props.dispatch(addCard (deckId, {question, answer}))
+    const submit = () => {
+      props.addCard ({question, answer})
       props.navigation.pop()
     }
 
-    console.log('propso', props)
     return (
 		<View 
 			style={styles.container}>
@@ -35,7 +31,7 @@ function AddCard (props) {
 		    />
 
 		    <TouchableOpacity style={styles.btnSubmit}
-	          onPress={() => submit('submit pressed')} >
+	          onPress={submit} >
 	        	<Text style={{color: 'white'}}>Submit</Text>
 	        </TouchableOpacity>
 
@@ -81,4 +77,12 @@ const styles = StyleSheet.create({
     },
   })
 
-export default connect()(AddCard)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const deckId = ownProps.navigation.state.params.id
+  
+  return {
+    addCard: card => dispatch(addCard (deckId, card))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddCard)
