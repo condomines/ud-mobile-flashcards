@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addCard } from '../actions/'
 
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { addCardToDeck } from '../utils/Storage';
 
 function AddCard (props) {
     const [question, setQuestion] = React.useState('');
@@ -77,7 +78,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const title = ownProps.navigation.state.params.title
   
   return {
-    addCard: card => dispatch(addCard (title, card))
+    addCard: card => {
+        dispatch(addCard (title, card))
+        addCardToDeck (title, card)
+    }
   }
 }
 
