@@ -16,9 +16,7 @@ function QuizView (props) {
     const [correctAnswers, setCorrectAnswers] = React.useState(0);
     const [showScore, setShowScore] = React.useState(false)
 
-    const { title, cards } = props.deck ? props.deck : {title: '', cards: []}
-
-    console.log('props', props)
+    const { cards } = props.deck ? props.deck : {title: '', cards: []}
 
     let text = showAnswer ? cards[cardIndex].answer : cards[cardIndex].question
 
@@ -35,17 +33,16 @@ function QuizView (props) {
       setCorrectAnswers(0)
       setShowScore(false)
     }
-    
+
     return (
       showScore === false 
       ?
         <View style={styles.container}>
-
-        <Text style={styles.quizProgress}>{cardIndex + 1}/{cards.length}</Text>
-              <TouchableOpacity onPress={() => flipAnswer(!showAnswer)}>
-                  <Text style={styles.question}>{text}</Text>
-                  <Text style={styles.selector}>{showAnswer ? 'Question' : 'Answer'}</Text>
-              </TouchableOpacity>
+          <Text style={styles.quizProgress}>{cardIndex + 1}/{cards.length}</Text>
+          <TouchableOpacity onPress={() => flipAnswer(!showAnswer)}>
+              <Text style={styles.question}>{text}</Text>
+              <Text style={styles.selector}>{showAnswer ? 'Question' : 'Answer'}</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity style={{...styles.btn, ...styles.btnCorrect}}
               onPress={() => submit(true)} >
@@ -58,18 +55,17 @@ function QuizView (props) {
             </TouchableOpacity>
         </View>
       : <View style={styles.container}>
-        <Text style={styles.quizProgress}>{correctAnswers} correct answers out of {cards.length}</Text>
-        <TouchableOpacity style={{...styles.btn, ...styles.btnCorrect}}
+          <Text style={styles.quizProgress}>{correctAnswers} correct answers out of {cards.length}</Text>
+          <TouchableOpacity style={{...styles.btn, ...styles.btnCorrect}}
               onPress={() => resetQuiz()} >
-              <Text style={styles.btnCorrect}>Restart Quiz</Text>
-            </TouchableOpacity>
+            <Text style={styles.btnCorrect}>Restart Quiz</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity style={{...styles.btn, ...styles.btnIncorrect}}
               onPress={() => props.navigation.pop()}>
-              <Text style={styles.btnIncorrect}>Back to deck</Text>
-            </TouchableOpacity>
+            <Text style={styles.btnIncorrect}>Back to deck</Text>
+          </TouchableOpacity>
         </View>
-
 		)
 }
 
