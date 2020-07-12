@@ -14,28 +14,24 @@ function AddCard (props) {
     }
 
     return (
-		<View 
-			style={styles.container}>
+      <View style={styles.container}>
+        <Text style={styles.quizProgress}>Add card</Text>
+          <TextInput style={styles.textInput}
+            onChangeText={text => setQuestion(text)}
+            value={question}
+            placeholder='Enter a question'
+          />
+          <TextInput style={styles.textInput}
+            onChangeText={text => setAnswer(text)}
+            value={answer}
+            placeholder='Enter an answer'
+          />
 
-<Text style={styles.quizProgress}>Add card</Text>
-
-		    <TextInput style={styles.textInput}
-		      onChangeText={text => setQuestion(text)}
-		      value={question}
-		      placeholder='Enter a question'
-		    />
-		    <TextInput style={styles.textInput}
-		      onChangeText={text => setAnswer(text)}
-		      value={answer}
-		      placeholder='Enter an answer'
-		    />
-
-		    <TouchableOpacity style={styles.btnSubmit}
-	          onPress={submit} >
-	        	<Text style={{color: 'white'}}>Submit</Text>
-	        </TouchableOpacity>
-
-		</View>
+          <TouchableOpacity style={styles.btnSubmit}
+              onPress={submit} >
+              <Text style={{color: 'white'}}>Submit</Text>
+          </TouchableOpacity>
+      </View>
 		)
 }
 

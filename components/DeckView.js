@@ -27,7 +27,7 @@ function DeckView (props) {
 
 		    <TouchableOpacity style={{...styles.btn, ...styles.btnDelete}}
 	          onPress={() => alert('Delete deck pressed')} >
-	        	<Text style={styles.btnDelete}>Delete deckddd</Text>
+	        	<Text style={styles.btnDelete}>Delete deck</Text>
 	        </TouchableOpacity>
 
 		</View>
