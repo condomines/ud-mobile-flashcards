@@ -3,6 +3,7 @@ import { getDecks } from "../utils/Storage"
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_CARD = 'ADD_CARD'
+export const DELETE_DECK = 'DELETE_DECK'
 
 export const SHOW_LOADING = 'SHOW_LOADING'
 export const HIDE_LOADING = 'HIDE_LOADING'
@@ -20,6 +21,13 @@ export function addDeck (title) {
       title,
     }
   }
+
+export function removeDeck (title) {
+  return {
+    type: DELETE_DECK,
+    title,
+  }
+}
 
 export function addCard (title, card) {
   return {

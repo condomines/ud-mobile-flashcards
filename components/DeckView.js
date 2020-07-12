@@ -1,37 +1,40 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import { StackActions } from 'react-navigation';
+import { removeDeck } from '../actions/'
 
 function DeckView (props) {
-    const { navigate, state } = props.navigation 
-    const { title } = state.params
-    const { cards } = props.decks[title]
+  const { navigate } = props.navigation
+  const { title, cards } = props.deck
 
-    return (
-		<View 
-			style={styles.container}>
-			<Text style={styles.title}>{title}</Text>
-            <Text style={styles.deckCards}>{cards.length} cards</Text>
+  const remove = () => {
+    props.removeDeck()
+    props.navigation.dispatch(StackActions.popToTop())
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.deckCards}>{cards.length} cards</Text>
             
-		    <TouchableOpacity style={{...styles.btn, ...styles.btnAdd}}
-	          onPress={() => navigate('AddCard', {title})} >
-	        	<Text style={styles.btnAdd}>Add card</Text>
-	        </TouchableOpacity>
+      <TouchableOpacity style={{...styles.btn, ...styles.btnAdd}}
+          onPress={() => navigate('AddCard', {title})} >
+        <Text style={styles.btnAdd}>Add card</Text>
+      </TouchableOpacity>
 
 
-		    <TouchableOpacity style={{...styles.btn, ...styles.btnStart}}
-	          onPress={() => navigate('QuizView', {title})} >
-	        	<Text style={styles.btnStart}>Start quiz</Text>
-	        </TouchableOpacity>
+      <TouchableOpacity style={{...styles.btn, ...styles.btnStart}}
+          onPress={() => navigate('QuizView', {title})} >
+        <Text style={styles.btnStart}>Start quiz</Text>
+      </TouchableOpacity>
 
-
-		    <TouchableOpacity style={{...styles.btn, ...styles.btnDelete}}
-	          onPress={() => alert('Delete deck pressed')} >
-	        	<Text style={styles.btnDelete}>Delete deck</Text>
-	        </TouchableOpacity>
-
-		</View>
-		)
+      <TouchableOpacity style={{...styles.btn, ...styles.btnDelete}}
+          onPress={remove} >
+        <Text style={styles.btnDelete}>Delete deck</Text>
+      </TouchableOpacity>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -81,8 +84,15 @@ const styles = StyleSheet.create({
     },
   })
 
-  const mapStateToProp = ( decks ) => {
-    return { decks }
-    }
+const mapStateToProp = ( state, ownProps ) => {
+  const { title } = ownProps.navigation.state.params
+  return { deck: state[title] ? state[title] : {title: '', cards: []}}
+}
 
-export default connect(mapStateToProp)(DeckView)
+const mapDispatchToProp = ( dispatch, ownProps ) => {
+  return {
+    removeDeck: () => dispatch(removeDeck(ownProps.navigation.state.params.title))
+  }
+}
+
+export default connect(mapStateToProp, mapDispatchToProp)(DeckView)
