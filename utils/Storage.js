@@ -44,7 +44,7 @@ export function getDecks () {
 }
 
 export function saveDeckTitle(title) {
-  const deck = {title: {title, cards: []}}
+  const deck = {[title]: {title, cards: []}}
   return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify(deck))
 }
 
