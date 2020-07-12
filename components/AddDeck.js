@@ -1,21 +1,45 @@
 import React from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { saveDeckTitle } from '../utils/Storage';
+import { addDeck } from '../actions'
+import { StackActions, NavigationActions } from 'react-navigation';
 
-function AddDeck () {
+function AddDeck (props) {
 
-	const [value, onChangeText] = React.useState();
+	// Try React hook and Redux hook
+	const [title, onChangeTitle] = React.useState();
+	const dispatch = useDispatch()
+
+	const toDeckview = (title) => {
+		const navigateAction = StackActions.reset({
+			index: 1,
+			actions: [
+				NavigationActions.navigate({ routeName: 'Home' }),
+				NavigationActions.navigate({ routeName: 'DeckView' , 
+												params: {id: title}})
+			]
+		  })
+		props.navigation.dispatch(navigateAction)
+	}
+	
+	const submit = () => {
+		dispatch(addDeck(title))
+		saveDeckTitle(title)
+		toDeckview(title)
+	}
 
 	return (
 		<View 
 			style={styles.container}>
 			<Text style={styles.title}>What is the title of your new deck?</Text>
 		    <TextInput style={styles.textInput}
-		      onChangeText={text => onChangeText(text)}
-		      value={value}
+		      onChangeText={text => onChangeTitle(text)}
+		      value={title}
 		      placeholder='Enter deck title'
 		    />
 		    <TouchableOpacity style={styles.btn}
-	          onPress={() => alert('Submit pressed')} >
+	          onPress={submit} >
 	        	<Text style={{color: 'white'}}>Submit</Text>
 	        </TouchableOpacity>
 		</View>

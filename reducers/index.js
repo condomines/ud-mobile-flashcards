@@ -10,7 +10,7 @@ function decks (state = {}, action) {
     case ADD_DECK :
       return {
         ...state,
-        [action.deck.id]: action.deck
+        [action.title]: {id: action.title, name: action.title, cards: []}
       }
     case ADD_CARD :
         const deck = state[action.deckId]

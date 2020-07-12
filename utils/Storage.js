@@ -30,6 +30,8 @@ const demoData = {
 }
 
 export function getDecks () {
+  AsyncStorage.removeItem(STORAGE_KEY, null)
+
   return AsyncStorage.getItem(STORAGE_KEY)
     .then(
       (res) => {
@@ -43,4 +45,8 @@ export function getDecks () {
       })
 }
 
+export function saveDeckTitle(title) {
+  const deck = {title: {id: title, questions: []}}
+  return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify(deck))
+}
 
