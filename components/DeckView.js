@@ -23,7 +23,6 @@ function DeckView (props) {
         <Text style={styles.btnAdd}>Add card</Text>
       </TouchableOpacity>
 
-
       <TouchableOpacity style={{...styles.btn, ...styles.btnStart}}
           onPress={() => navigate('QuizView', {title})} >
         <Text style={styles.btnStart}>Start quiz</Text>
