@@ -1,13 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-
-/*displays a card question
-an option to view the answer (flips the card)
-a "Correct" button
-an "Incorrect" button
-the number of cards left in the quiz
-Displays the percentage correct once the quiz is complete*/
+import { clearLocalNotification, setLocalNotification} from '../utils/Notification'
 
 function QuizView (props) {
 
@@ -22,10 +16,13 @@ function QuizView (props) {
 
     const submit = (correct) => {
       if (correct) setCorrectAnswers(correctAnswers + 1)
-      if (cardIndex + 1 === cards.length)
+      if (cardIndex + 1 === cards.length) {
         setShowScore(true)
-      else
+        clearLocalNotification()
+          .then(setLocalNotification)
+      } else {
         setCardIndex(cardIndex + 1)
+      }
     }
 
     const resetQuiz = () => {

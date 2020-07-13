@@ -1,7 +1,9 @@
 PODS:
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
-  - EXConstants (9.0.0):
+  - EXApplication (2.1.1):
+    - UMCore
+  - EXConstants (9.1.1):
     - UMConstantsInterface
     - UMCore
   - EXErrorRecovery (1.1.0):
@@ -24,6 +26,9 @@ PODS:
     - UMCore
     - UMPermissionsInterface
     - UMTaskManagerInterface
+  - EXNotifications (0.1.7):
+    - UMCore
+    - UMPermissionsInterface
   - EXPermissions (8.1.0):
     - UMCore
     - UMPermissionsInterface
@@ -284,7 +289,8 @@ PODS:
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
-  - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXApplication (from `../node_modules/expo-application/ios`)
+  - EXConstants (from `../node_modules/expo-notifications/node_modules/expo-constants/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
@@ -292,6 +298,7 @@ DEPENDENCIES:
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - EXLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
   - EXLocation (from `../node_modules/expo-location/ios`)
+  - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - EXSQLite (from `../node_modules/expo-sqlite/ios`)
@@ -350,8 +357,10 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EXApplication:
+    :path: "../node_modules/expo-application/ios"
   EXConstants:
-    :path: "../node_modules/expo-constants/ios"
+    :path: "../node_modules/expo-notifications/node_modules/expo-constants/ios"
   EXErrorRecovery:
     :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
@@ -366,6 +375,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-linear-gradient/ios"
   EXLocation:
     :path: "../node_modules/expo-location/ios"
+  EXNotifications:
+    :path: "../node_modules/expo-notifications/ios"
   EXPermissions:
     :path: "../node_modules/expo-permissions/ios"
   EXSplashScreen:
@@ -464,7 +475,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
-  EXConstants: 5304709b1bea70a4828f48ba4c7fc3ec3b2d9b17
+  EXApplication: 7cf81de6fafccff42f5d1caa5c24a159db6b9437
+  EXConstants: f907b3b6ce16e20d1750f22af1e095e924574bcb
   EXErrorRecovery: 8f4c21ab2f51bf75defe4536f841a37de59b0661
   EXFileSystem: cf4232ba7c62dc49b78c2d36005f97b6fddf0b01
   EXFont: b60f7a8900e3a12e7be3b2a40e19b22c7b5f89ba
@@ -472,6 +484,7 @@ SPEC CHECKSUMS:
   EXKeepAwake: d045bc2cf1ad5a04f0323cc7c894b95b414042e0
   EXLinearGradient: 97d8095d1e4ad96f7893e010e564796ed8aeea42
   EXLocation: bbd487fd96a18a3ad9725389bbb94c4a5f78edf3
+  EXNotifications: cc5d647c15b5f00602e1c4f7244d6a3a15dd2eb6
   EXPermissions: 24b97f734ce9172d245a5be38ad9ccfcb6135964
   EXSplashScreen: 6568daa178c8e17f2197d29cea858f0e0b61b695
   EXSQLite: 877ad6c8eb169353a2f94d5ad26510ffadd46a1f
@@ -522,4 +535,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: da65cf56b01002b51b3a7b6db34001b33cce28e4
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

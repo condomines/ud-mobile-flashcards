@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 
-import React, { useEffect, useState } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
 
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -21,6 +21,8 @@ import AddDeck from './components/AddDeck'
 import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
 import AddCard from './components/AddCard'
+
+import { setLocalNotification } from './utils/Notification'
 
 const Tabs = createBottomTabNavigator({
   DeskListView: {
@@ -89,6 +91,7 @@ function App() {
 
   useEffect(() => {
     store.dispatch(initData())
+    setLocalNotification()
     })
 
   return (
