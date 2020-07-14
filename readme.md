@@ -48,6 +48,7 @@ once the expo Metro Bundler has started. Or scan the QR code with your device.
 ## Running the tests
 
 Up to now, there isn't any test implemented.
+The App has been manually checked on Android and iOS simulator.
 
 ### Break down into end to end tests
 
