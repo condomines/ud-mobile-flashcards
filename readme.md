@@ -27,7 +27,7 @@ For ease of development, we use expo. You should install it globally:
 The installation is straightforward:
 
 ```
-git checkout
+git clone 
 cd
 yarn install
 expo start
@@ -36,7 +36,7 @@ expo start
 If you want you might use npm instead of yarn with the same steps:
 
 ```
-git checkout
+git clone
 cd
 npm install
 expo start
